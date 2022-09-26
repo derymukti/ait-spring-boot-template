@@ -24,9 +24,11 @@ public class ProductDelegateImpl implements ProductDelegate {
     }
 
     @Override
-    public Products create(Products products) {
+    public Products createProduct(Products products) {
+//        System.out.println(products.getProductName());
         return productRepository.save(products);
     }
+
 
 
 }

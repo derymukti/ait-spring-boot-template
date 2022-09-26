@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface ProductDelegate {
+
     List<Products> getAllProduct();
-    Products create(Products products);
+    Products createProduct(Products products);
 
 }

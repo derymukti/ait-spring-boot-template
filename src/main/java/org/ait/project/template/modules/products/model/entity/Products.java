@@ -14,17 +14,22 @@ import java.time.ZonedDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Products implements Serializable {
+public class Products{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "product_name")
     private String productName;
 
+    @Column(name = "price")
     private Integer price;
 
+    @Column(name = "stock")
     private Integer stock;
 
+    @Column(name = "is_active")
     private Boolean isActive;
 
     @Column(name = "updated_at")

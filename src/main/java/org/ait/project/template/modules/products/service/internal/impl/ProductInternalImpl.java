@@ -1,6 +1,7 @@
 package org.ait.project.template.modules.products.service.internal.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.ait.project.template.modules.products.dto.request.ProductDTO;
 import org.ait.project.template.modules.products.dto.response.ProductResponse;
 import org.ait.project.template.modules.products.model.entity.Products;
 import org.ait.project.template.modules.products.service.delegate.ProductDelegate;
@@ -8,6 +9,7 @@ import org.ait.project.template.modules.products.service.internal.ProductInterna
 import org.ait.project.template.modules.products.transform.ProductMapper;
 import org.ait.project.template.shared.enums.ResponseEnum;
 import org.ait.project.template.shared.template.ResponseCollection;
+import org.ait.project.template.shared.template.ResponseDetail;
 import org.ait.project.template.shared.template.ResponseList;
 import org.ait.project.template.shared.template.ResponseTemplate;
 import org.ait.project.template.shared.utils.ResponseHelper;
@@ -30,4 +32,11 @@ public class ProductInternalImpl implements ProductInternal {
         return responseHelper.createResponseCollection(ResponseEnum.SUCCESS,null,
                 productMapper.mapProductToResponseList(productsList));
     }
+
+    @Override
+    public ResponseEntity<ResponseTemplate<ResponseDetail<ProductResponse>>> createProduct(ProductDTO productDTO) {
+        Products products = productDelegate.createProduct(productMapper.mapRequestToProduct(productDTO));
+        return responseHelper.createResponseDetail(ResponseEnum.SUCCESS,productMapper.mapProductToResponse(products));
+    }
+
 }
