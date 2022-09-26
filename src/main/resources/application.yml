@@ -14,6 +14,7 @@ spring:
   jackson:
     time-zone: Asia/Jakarta
 
+
 #logbook style: https://github.com/zalando/logbook#configuration
 logbook:
   format:
