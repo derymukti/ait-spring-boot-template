@@ -11,6 +11,8 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductResponse {
+    @JsonProperty("id")
+    private Long id;
     @JsonProperty("product_name")
     private String productName;
     @JsonProperty("price")

@@ -4,16 +4,17 @@ package org.ait.project.template.modules.products.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 
-@Data
+//@Data
 @Entity
 @Table(name="products")
 @AllArgsConstructor
 @Setter
 @Getter
 @NoArgsConstructor
-public class Products {
+public class Products implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

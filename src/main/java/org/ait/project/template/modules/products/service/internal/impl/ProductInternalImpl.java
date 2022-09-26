@@ -27,8 +27,6 @@ public class ProductInternalImpl implements ProductInternal {
     @Override
     public ResponseEntity<ResponseTemplate<ResponseList<ProductResponse>>> getAllProduct() {
         List<Products> productsList = productDelegate.getAllProduct();
-        System.out.println("Kata ntep suruh kasih ini");
-        System.out.println(productsList);
         return responseHelper.createResponseCollection(ResponseEnum.SUCCESS,null,
                 productMapper.mapProductToResponseList(productsList));
     }
