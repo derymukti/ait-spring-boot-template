@@ -39,4 +39,11 @@ public class ProductInternalImpl implements ProductInternal {
         return responseHelper.createResponseDetail(ResponseEnum.SUCCESS,productMapper.mapProductToResponse(products));
     }
 
+    @Override
+    public ResponseEntity<ResponseTemplate<ResponseList<ProductResponse>>> findByProductName(String productName) {
+        List<Products> productsList = productDelegate.findByProductName(productName);
+        return responseHelper.createResponseCollection(ResponseEnum.SUCCESS, null,
+                productMapper.mapProductToResponseList(productsList));
+    }
+
 }

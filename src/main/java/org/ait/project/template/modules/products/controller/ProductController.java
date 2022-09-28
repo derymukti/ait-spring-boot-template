@@ -12,10 +12,7 @@ import org.ait.project.template.shared.template.ResponseList;
 import org.ait.project.template.shared.template.ResponseTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -37,5 +34,11 @@ public class ProductController implements ProductInternal {
     @PostMapping("/product")
     public ResponseEntity<ResponseTemplate<ResponseDetail<ProductResponse>>> createProduct(@Valid @RequestBody ProductDTO productDTO) {
         return productInternal.createProduct(productDTO);
+    }
+
+    @Override
+    @GetMapping("/product/search")
+    public ResponseEntity<ResponseTemplate<ResponseList<ProductResponse>>> findByProductName(@RequestParam String productName) {
+        return productInternal.findByProductName(productName);
     }
 }

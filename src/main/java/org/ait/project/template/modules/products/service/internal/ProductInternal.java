@@ -13,4 +13,7 @@ public interface ProductInternal {
 
     ResponseEntity<ResponseTemplate<ResponseDetail<ProductResponse>>> createProduct(ProductDTO productDTO);
 
+    ResponseEntity<ResponseTemplate<ResponseList<ProductResponse>>> findByProductName(String productName);
+
+
 }

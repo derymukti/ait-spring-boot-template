@@ -1,1 +1,0 @@
-package org.ait.project.template.modules.products.model.entity;
