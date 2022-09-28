@@ -7,6 +7,7 @@ import org.ait.project.template.modules.products.service.delegate.ProductDelegat
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +30,11 @@ public class ProductDelegateImpl implements ProductDelegate {
     @Override
     public List<Products> findByProductName(String productName) {
         return productRepository.findByProductNameContaining(productName);
+    }
+
+    @Override
+    public Optional<Products> getDetail(Long id) {
+        return productRepository.findById(id);
     }
 
 

@@ -8,7 +8,6 @@ import org.ait.project.template.modules.products.service.delegate.ProductDelegat
 import org.ait.project.template.modules.products.service.internal.ProductInternal;
 import org.ait.project.template.modules.products.transform.ProductMapper;
 import org.ait.project.template.shared.enums.ResponseEnum;
-import org.ait.project.template.shared.template.ResponseCollection;
 import org.ait.project.template.shared.template.ResponseDetail;
 import org.ait.project.template.shared.template.ResponseList;
 import org.ait.project.template.shared.template.ResponseTemplate;
@@ -17,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +44,12 @@ public class ProductInternalImpl implements ProductInternal {
         List<Products> productsList = productDelegate.findByProductName(productName);
         return responseHelper.createResponseCollection(ResponseEnum.SUCCESS, null,
                 productMapper.mapProductToResponseList(productsList));
+    }
+
+    @Override
+    public ResponseEntity<ResponseTemplate<ResponseDetail<Optional<Products>>>> getDetail(Long id) {
+        Optional<Products> products = productDelegate.getDetail(id);
+        return responseHelper.createResponseDetail(ResponseEnum.SUCCESS,products);
     }
 
 }
